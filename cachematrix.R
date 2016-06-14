@@ -71,6 +71,7 @@ cacheSolve <- function(x, ...) {
   
   matr <-x$get()
   invm <- solve(matr,... )
+  #set the inverse to cache of environment
   x$setinv(invm)
   invm
 }
