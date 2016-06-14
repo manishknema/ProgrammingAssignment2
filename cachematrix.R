@@ -10,9 +10,9 @@
 ## This function creates a matrix, it can cache its inverse
 ## using the function cacheSolve() defined below
 ## it exposes following functions 
-##    set() to set the new matrix, in a variable x
+##    set() to set the new matrix, in a variable x and caches it to environment of x
 ##    get() to get the cached matrix i.e.  x
-##    setinv() to set new inverse to the matrix, in variable inv
+##    setinv(inver) to set new inverse to the matrix 'x', in variable inv that is cached
 ##    getinv() to get the cached inverse (inv) of stored matrix (x)
 makeCacheMatrix <- function(x = matrix()) {
   
@@ -59,7 +59,6 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
 ## Return a matrix that is the inverse of 'x', first try it from cache of 'x' 
 ## if null then calculates inverse of 'x' and stores in cache
 cacheSolve <- function(x, ...) {
@@ -71,7 +70,7 @@ cacheSolve <- function(x, ...) {
   }
   
   matr <-x$get()
-  invm <- solve(matr)
+  invm <- solve(matr,... )
   x$setinv(invm)
   invm
 }
